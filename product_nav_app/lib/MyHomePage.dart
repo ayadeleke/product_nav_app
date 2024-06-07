@@ -11,24 +11,34 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Product Navigation")),
-        body: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              child:
-                  ProductBox(item: items[index], key: ValueKey(items[index])),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProductPage(
-                        item: items[index], key: ValueKey(items[index])),
+      appBar: AppBar(
+        title: const Text(
+          "Product Navigation",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.blue,
+      ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            child: ProductBox(item: items[index], key: ValueKey(items[index])),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductPage(
+                    item: items[index],
+                    key: ValueKey(items[index]),
                   ),
-                );
-              },
-            );
-          },
-        ));
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
